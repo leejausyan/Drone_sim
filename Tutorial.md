@@ -23,6 +23,10 @@ run MAVROS Console
 ```sh
 ros2 run mavros mavros_node
 ```
+or
+```sh
+ros2 run mavros mavros_node --ros-args -p fcu_url:=udp://127.0.0.1:14550@14550
+```
 ![mavros](s2.png)
 
 ## check ros2 topic connection
