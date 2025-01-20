@@ -43,3 +43,29 @@ rtl
 land
 ```
 ![table of simulation](s3.png)
+
+Guided Mode (auto/rtl/land)
+```sh
+ros2 service call /mavros/set_mode mavros_msgs/srv/SetMode "{custom_mode: 'guided'}"
+```
+Arming
+```sh
+ros2 service call /mavros/cmd/arming mavros_msgs/srv/CommandBool "{value: true}"
+```
+takeoff
+```sh
+ros2 service call /mavros/cmd/takeoff mavros_msgs/srv/CommandTOL "{altitude: 10}"
+```
+move to
+```sh
+ros2 topic pub /mavros/setpoint_position/local geometry_msgs/msg/PoseStamped "{
+    header: {
+        stamp: {sec: 0, nanosec: 0},
+        frame_id: 'map'
+    },
+    pose: {
+        position: {x: 10.0, y: 10.0, z: 5.0},
+        orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
+    }
+}" --once
+```
